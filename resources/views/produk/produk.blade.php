@@ -126,6 +126,9 @@
             </div>
         </div>
     </div>
+
+    Cart::add()
+
     @include('produk.modal-produk')
     @include('sweetalert::alert')
 @endsection
