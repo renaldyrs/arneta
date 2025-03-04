@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Produk;
 
 class ProdukController extends Controller
 {
     //
     public function produk()
     {
+        $supplier = DB::table('supplier')->get();
 
         $produk =  DB::table('produk')
         ->select(
@@ -18,11 +20,27 @@ class ProdukController extends Controller
         )
         ->join('supplier', 'produk.id_supplier', '=', 'supplier.id')
         ->get();
-        return view('produk.produk',['produk' => $produk]);
+        return view('produk.produk',['produk' => $produk],['supplier' => $supplier]);
     }
 
-    public function inputproduk()
-    {
+    public function createproduk(Request $request){
+
+        $kode = DB::table('produk')->max('kode');
+        $kode = $kode + 1;
+
+        $produk = new Produk;
+        $produk->kode = $request->$kode;
+        $produk->id_supplier = $request->supplier;
+        $produk->nama_produk = $request->nama_produk;
+        $produk->jumlah = $request->jumlah;
+        $produk->harga_awal = $request->harga_awal;
+        $produk->harga_akhir = $request->harga_akhir;
+        $produk->tanggal = $request->tanggal;
+        $produk->stock_awal = $request->stock_awal;
+        $produk->stock_akhir = $request->stock_akhir;
         
+        $produk->save();
+        return redirect('/produk');
+
     }
 }

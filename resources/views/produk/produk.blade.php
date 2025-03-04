@@ -17,15 +17,20 @@
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-uppercase text-secondary text-xxs font-weight-bolder">
                                         
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">#</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">Kode Produk</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">Nama Produk</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Supplier</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Jumlah</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Harga Awal</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Harga Akhir</th>
+                                        <th  style="text-align: center;">#</th>
+                                        <th  style="text-align: center;">Kode Produk</th>
+                                        <th  style="text-align: center;">Tanggal</th>
+                                        <th  style="text-align: center;">Nama Produk</th>
+                                        <th  style="text-align: center;">Supplier</th>
+                                        
+                                        <th  style="text-align: center;">Jumlah</th>
+                                        <th  style="text-align: center;">Harga Awal</th>
+                                        <th  style="text-align: center;">Harga Akhir</th>
+                                        
+                                        <th  style="text-align: center;">Stock Awal</th>
+                                        <th  style="text-align: center;">Stock Akhir</th>
                                         
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Aksi</th>
                                         </tr>
@@ -41,6 +46,13 @@
                                         <td>
                                             <div style="text-align: center">
                                                 <h6 class="mb-0 text-sm">{{$p->kode}}</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$p->tanggal}}</h6>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>
@@ -77,6 +89,20 @@
                                             <div style="text-align: center;">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{$p->harga_akhir}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$p->stock_awal}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$p->stock_akhir}}</h6>
                                                 </div>
                                             </div>
                                         </td>

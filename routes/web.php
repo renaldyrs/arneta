@@ -90,4 +90,6 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('pesanan',[PesananController::class, 'pesanan']);
+
 Route::get('produk',[ProdukController::class, 'produk']);
+Route::post('produk/tambahproduk', [ProdukController::class, 'createproduk']);

@@ -1,6 +1,6 @@
 <!---- MODAL PESANAN ---->
 
-<form action="" method="POST" id="form-pesanan">
+<form action="{{url('produk/tambahproduk')}}" method="POST" id="form-pesanan">
     @csrf
     <div class="modal fade text-left" id="TambahProduk" tabindex="-1" role="dialog" aria-hidden="true"
         aria-labelledby="myModalLabel">
@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group has-success">
                                         <label class="control-label">Nama Produk</label>
-                                        <input type="text" value="" name="namaproduk" id="namaproduk"
+                                        <input type="text" value="" name="nama_produk" id="namaproduk"
                                             class="form-control" placeholder="Nama Produk">
 
                                     </div>
@@ -37,8 +37,9 @@
                                         <label class="control-label">Supplier</label>
                                         <select name="supplier" class="form-control" id="supplier">
 
-                                            <option value="Cash">Karno</option>
-                                            <option value="Transfer">Transfer</option>
+                                            @foreach ($supplier as $item)
+                                                <option value="{{$item->id}}">{{$item->Nama}}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
@@ -48,8 +49,8 @@
                                     <div class="form-group has-success">
                                         <label class="control-label">Jumlah</label>
                                         <div class="group" style="display: flex; ">
-                                            <input type="text" value="" name="jumlah" id="jumlah" class="group-input form-control"
-                                                placeholder="Jumlah">
+                                            <input type="text" value="" name="jumlah" id="jumlah"
+                                                class="group-input form-control" placeholder="Jumlah">
                                             <div class="input-group-prepend">
                                                 <div class="group-text">pcs</div>
                                             </div>
@@ -61,8 +62,15 @@
 
                                 <div class="col-md-3">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Harga</label>
-                                        <input type="text" value="" name="harga" id="harga" class="form-control">
+                                        <label class="control-label">Harga Awal</label>
+                                        <input type="text" value="" name="harga_awal" id="harga" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">Harga Akhir</label>
+                                        <input type="text" value="" name="harga_akhir" id="harga" class="form-control">
 
                                     </div>
                                 </div>
@@ -73,8 +81,23 @@
                                         <input type="date" value="" name="tanggal" id="tanggal" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">Stock Awal</label>
+                                        <input type="text" value="" name="stock_awal" id="harga" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">Stock Akhir</label>
+                                        <input type="text" value="" name="stock_akhir" id="harga" class="form-control">
+
+                                    </div>
+                                </div>
 
                             </div>
+
 
                         </div>
 
@@ -102,15 +125,16 @@
     .group {
         display: flex;
     }
+
     .group-text {
-        
+
         border-left: none;
         padding: 0.375rem 0.75rem;
         font-size: 1rem;
         font-weight: 400;
         height: calc(1.5em + 0.75rem;
 
-    }
+        }
 </style>
 <script type="text/javascript">
     $(document).ready(function () {
