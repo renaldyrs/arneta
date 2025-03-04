@@ -19,35 +19,79 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Produk</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">#</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">Kode Produk</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 " style="text-align: center;">Nama Produk</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Supplier</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Jumlah</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Harga Awal</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Harga Akhir</th>
+                                        
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: center;">Aksi</th>
                                         </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($produk as $p)
                                     <tr>
+                                    <td>
+                                            <div class="" style="text-align: center">
+                                                <h6 class="mb-0 text-sm">{{$loop->iteration}}</h6>
+                                            </div>
+                                        </td>
                                         <td>
-                                            <div class="d-flex px-2 py-1">
+                                            <div style="text-align: center">
+                                                <h6 class="mb-0 text-sm">{{$p->kode}}</h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">1</h6>
+                                                    <h6 class="mb-0 text-sm">{{$p->nama_produk}}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex px-2 py-1">
+                                            <div style="text-align: center;">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Baju</h6>
+                                                    <h6 class="mb-0 text-sm">{{$p->nama_supplier}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                    
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$p->jumlah}}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex px-2 py-1">
+                                            <div  style="text-align: center;">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Rp. 100.000</h6>
+                                                    <h6 class="mb-0 text-sm">{{$p->harga_awal}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$p->harga_akhir}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <div class="d-flex justify-content-center" style="gap: 5px;">
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="">Edit</a>
+                                                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="">Hapus</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>

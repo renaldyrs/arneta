@@ -8,7 +8,7 @@
             <div>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="myModalLabel">Pesanan</h3>
+                        <h3 class="modal-title" id="myModalLabel">Produk</h3>
                         <button type="button" class="close" onclick="javascript:window.location.reload()"
                             data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -21,26 +21,23 @@
 
                             <div class="row p-t-18">
 
-                            <input type="hidden" value="{{Auth::user()->id}}" name="iduser">
+                                <input type="hidden" value="{{Auth::user()->id}}" name="iduser">
 
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Nama Pelanggan</label>
-                                        <select name="id_pelanggan" class="form-control ">
-                                            <option value="">Nama Pelanggan</option>
-                                            
-
-                                        </select>
+                                        <label class="control-label">Nama Produk</label>
+                                        <input type="text" value="" name="namaproduk" id="namaproduk"
+                                            class="form-control" placeholder="Nama Produk">
 
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Jenis Pembayaran</label>
-                                        <select name="jenisbayar" class="form-control" id="metode">
+                                        <label class="control-label">Supplier</label>
+                                        <select name="supplier" class="form-control" id="supplier">
 
-                                            <option value="Cash">Cash</option>
+                                            <option value="Cash">Karno</option>
                                             <option value="Transfer">Transfer</option>
                                         </select>
 
@@ -49,62 +46,38 @@
 
                                 <div class="col-md-3">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Metode Pembayaran</label>
-                                        <select name="id_metode" class="form-control" id="metodepembayaran">
-                                            <option value="0">Cash</option>
-                                        </select>
+                                        <label class="control-label">Jumlah</label>
+                                        <div class="group" style="display: flex; ">
+                                            <input type="text" value="" name="jumlah" id="jumlah" class="group-input form-control"
+                                                placeholder="Jumlah">
+                                            <div class="input-group-prepend">
+                                                <div class="group-text">pcs</div>
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Kode Bank</label>
-                                        <input type="text" value="-" name="kodebank" id="kodebank" class="form-control"
-                                            readonly>
+                                        <label class="control-label">Harga</label>
+                                        <input type="text" value="" name="harga" id="harga" class="form-control">
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group has-success">
-                                        <label class="control-label">Status Pembayaran</label>
-                                        <select name="statuspembayaran" class="form-control" id="">
-                                            <option readonly value="">Status Pemabayaran</option>
-                                            <option value="Belum Bayar">Belum Bayar</option>
-                                            <option value="Sudah Bayar">Sudah Bayar</option>
-                                        </select>
+                                        <label class="control-label">Tanggal</label>
+                                        <input type="date" value="" name="tanggal" id="tanggal" class="form-control">
                                     </div>
                                 </div>
-
-
-                                <div class="col-md-3">
-                                    <div class="form-group has-success">
-                                        <label class="control-label">Jenis</label>
-                                        <select name="id_jenis" id="autojenis" class="form-control ">
-                                            <option value="0">Jenis Jasa</option>
-                                           
-
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group has-success">
-                                        <label class="control-label">harga</label>
-                                        <input type="text" name="harga" id="harga1" class="form-control" readonly>
-                                    </div>
-                                </div>
-
-                                
-
-                                
 
                             </div>
 
                         </div>
-                        
+
                         <div class="form-actions" style="text-align: end;">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>
                                 Tambah Produk</button>
@@ -125,6 +98,20 @@
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 
+<style>
+    .group {
+        display: flex;
+    }
+    .group-text {
+        
+        border-left: none;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        height: calc(1.5em + 0.75rem;
+
+    }
+</style>
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).on('change', '#autojenis', function () {
