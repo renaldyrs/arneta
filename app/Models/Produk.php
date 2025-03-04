@@ -17,10 +17,11 @@ class Produk extends Model
         'id_supplier',
         'nama_produk',
         'jumlah',
-        'harga_awal',
-        'harga_akhir',
+        'total',
+        'harga_beli',
+        'harga_jual',
         'tanggal',
-        'stock_awal',
-        'stock_akhir',   
+        'stock',
+         
     ];
 }

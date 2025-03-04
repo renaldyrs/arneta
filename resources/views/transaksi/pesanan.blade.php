@@ -1,46 +1,31 @@
-<table>
-   	<thead>
-       	<tr>
-           	<th>Product</th>
-           	<th>Qty</th>
-           	<th>Price</th>
-           	<th>Subtotal</th>
-       	</tr>
-   	</thead>
+@extends('layouts.user_type.auth')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-   	<tbody>
+@section('content')
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between" style="padding-bottom: 1px;">
+                        <h6>Produk</h6>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#TambahProduk">Tambah
+                            Produk</a>
 
-   		<?php foreach(Cart::content() as $row) :?>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+							
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-       		<tr>
-           		<td>
-               		<p><strong><?php echo $row->name; ?></strong></p>
-               		<p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
-           		</td>
-           		<td><input type="text" value="<?php echo $row->qty; ?>"></td>
-           		<td>$<?php echo $row->price; ?></td>
-           		<td>$<?php echo $row->total; ?></td>
-       		</tr>
-
-	   	<?php endforeach;?>
-
-   	</tbody>
-   	
-   	<tfoot>
-   		<tr>
-   			<td colspan="2">&nbsp;</td>
-   			<td>Subtotal</td>
-   			<td><?php echo Cart::subtotal(); ?></td>
-   		</tr>
-   		<tr>
-   			<td colspan="2">&nbsp;</td>
-   			<td>Tax</td>
-   			<td><?php echo Cart::tax(); ?></td>
-   		</tr>
-   		<tr>
-   			<td colspan="2">&nbsp;</td>
-   			<td>Total</td>
-   			<td><?php echo Cart::total(); ?></td>
-   		</tr>
-   	</tfoot>
-</table>
+    @include('sweetalert::alert')
+@endsection
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

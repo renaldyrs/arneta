@@ -97,3 +97,5 @@ Route::get('supplier',[SupplierController::class, 'supplier']);
 Route::get('produk',[ProdukController::class, 'produk']);
 Route::post('produk/tambahproduk', [ProdukController::class, 'createproduk']);
 Route::get('produk/deleteproduk/{kode}', [ProdukController::class, 'deleteproduk']);
+
+Route::get('barcode', [ProdukController::class, 'generateBarCode']);
