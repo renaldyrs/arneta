@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Produk;
+
 
 class ProdukController extends Controller
 {
@@ -40,7 +42,15 @@ class ProdukController extends Controller
         $produk->stock_akhir = $request->stock_akhir;
         
         $produk->save();
+        alert()->success('Success', 'Produk Berhasil Ditambahkan');
+        
         return redirect('/produk');
+    }
 
+    public function deleteproduk($kode){
+        $produk = Produk::where('kode', $kode);
+        $produk->delete();
+        alert()->success('Success', 'Produk Berhasil Dihapus');
+        return redirect('/produk');
     }
 }

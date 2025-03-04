@@ -1,4 +1,4 @@
-<!---- MODAL PESANAN ---->
+<!---- MODAL PRODUK ---->
 
 <form action="{{url('produk/tambahproduk')}}" method="POST" id="form-pesanan">
     @csrf
@@ -106,6 +106,7 @@
                                 Tambah Produk</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
+                        
 
 
                     </div>
@@ -136,81 +137,3 @@
 
         }
 </style>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on('change', '#autojenis', function () {
-
-            var id = $(this).val();
-
-            $.ajax({
-                type: "get",
-                url: '{!!URL::to('getharga')!!}',
-                data: { 'id': id, },
-                dataType: 'json',
-                success: function (data) {
-
-                    $("#harga1").val(data.harga);
-                    $("#total").val(data.harga * jumlah);
-
-                },
-                error: function (data) {
-
-                }
-            });
-        });
-    });
-
-    $(document).ready(function () {
-        $(document).on('change', '#metode', function () {
-            var jenis = $(this).val();
-            console.log(jenis);
-
-            if (jenis) {
-                $.ajax({
-                    url: 'getmetode/' + jenis,
-                    type: "GET",
-                    dataType: "JSON",
-                    success: function (data) {
-                        console.log(data);
-                        $('#metodepembayaran').empty();
-                        $.each(data, function (key, value) {
-
-                            $('#metodepembayaran').append('<option value="' + value.id + '">' + value.namabank + '</option>');
-                        });
-
-                    }
-                });
-            } else {
-
-                $('#metodepembayaran').append('<option value="0"></option>');
-            }
-
-        });
-
-    });
-
-
-    $(document).ready(function () {
-        $(document).on('change', '#metodepembayaran', function () {
-            var id = $(this).val();
-            console.log(id);
-
-            $.ajax({
-                url: '{!!URL::to('getkodebank')!!}',
-                type: "GET",
-                data: { 'id': id, },
-                dataType: "JSON",
-                success: function (data) {
-                    console.log(data.kodebank);
-                    $('#kodebank').val(data.kodebank);
-                }
-
-            });
-
-        });
-
-    });
-</script>
-
-
-<!-- MODAL UBAH STATUS -->

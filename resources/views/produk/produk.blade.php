@@ -110,7 +110,7 @@
                                             <div style="text-align: center;">
                                                 <div class="d-flex justify-content-center" style="gap: 5px;">
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="">Edit</a>
-                                                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="">Hapus</a>
+                                                    <a href="produk/deleteproduk/{{  $p->kode}}" class="btn btn-danger" type="submit">Hapus</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -127,7 +127,9 @@
         </div>
     </div>
     @include('produk.modal-produk')
+    @include('sweetalert::alert')
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 

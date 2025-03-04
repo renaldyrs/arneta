@@ -8,6 +8,7 @@ use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -91,5 +92,8 @@ Route::get('/login', function () {
 
 Route::get('pesanan',[PesananController::class, 'pesanan']);
 
+Route::get('supplier',[SupplierController::class, 'supplier']);
+
 Route::get('produk',[ProdukController::class, 'produk']);
 Route::post('produk/tambahproduk', [ProdukController::class, 'createproduk']);
+Route::get('produk/deleteproduk/{kode}', [ProdukController::class, 'deleteproduk']);
