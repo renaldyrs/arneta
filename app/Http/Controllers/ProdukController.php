@@ -6,6 +6,7 @@ use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Produk;
+use App\Models\Kategori;
 use Picqer\Barcode\BarcodeGeneratorHTML;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -17,39 +18,49 @@ class ProdukController extends Controller
     public function produk()
     {
         
-        $qrCode = QrCode::size(300)->generate('Hello, Laravel 11!');
-  
-
+        $kategori = DB::table('kategori')
+        ->select('kategori.*')
+        ->get();
         $supplier = DB::table('supplier')->get();
 
         $produk =  DB::table('produk')
         ->select(
-            'supplier.nama as nama_supplier',   
+            'supplier.nama as nama_supplier', 
+            'kategori.nama as nama_kategori', 
+            'kategori.id as id_kategori', 
+            'kategori.kode as kode_kategori',
             'produk.*'
         )
         ->join('supplier', 'produk.id_supplier', '=', 'supplier.id')
+        ->join('kategori', 'produk.id_kategori', '=', 'kategori.id')
         ->get();
-        return view('produk.produk',['produk' => $produk],['supplier' => $supplier],compact('qrCode'));
-    }
-
-    public function generateBarCode(){
-        $generator = new BarcodeGeneratorHTML();
-    $generator->getBarcode('123', $generator::TYPE_CODE_128);
-
-        return view('produk.barcode',compact('generator'));
+        return view('produk.produk',['produk' => $produk, 'kategori' => $kategori, 'supplier' => $supplier]);
     }
 
     public function createproduk(Request $request){
 
+        $huruf = DB::table('kategori')->where('id', $request->kategori)->value('kode');
+
         
 
-        $kode = 1;
-        $kode = DB::table('produk')->max('kode');
-        $kode = $kode + 1;
+        
+        $cek = Produk::where('kode','like', $huruf.'%')->latest()->first();
+        if($cek == null){
+            $kodeurut = $huruf."0001";
+        }else{
+            
+            $kodeurut = $cek->kode;
+            $kodeurut++;
+            
+            
+        }
 
+        $kode =$kodeurut;
+        
         $produk = new Produk;
-        $produk->kode = $request->$kode;
+        $produk->kode = $kode;
         $produk->id_supplier = $request->supplier;
+        $produk->id_kategori = $request->kategori;
         $produk->nama_produk = $request->nama_produk;
         $produk->jumlah = $request->jumlah;
         $produk->total = $request->total;

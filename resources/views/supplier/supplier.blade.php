@@ -10,8 +10,8 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between" style="padding-bottom: 1px;">
                         <h6>Produk</h6>
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#TambahProduk">Tambah
-                            Produk</a>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#TambahSupplier">Tambah
+                            Supplier</a>
 
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -39,17 +39,17 @@
                                         </td>
                                         <td>
                                             <div style="text-align: center">
-                                                <h6 class="mb-0 text-sm">{{$s->Nama}}</h6>
+                                                <h6 class="mb-0 text-sm">{{$s->nama}}</h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div style="text-align: center">
-                                                <h6 class="mb-0 text-sm">{{$s->Alamat}}</h6>
+                                                <h6 class="mb-0 text-sm">{{$s->alamat}}</h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div style="text-align: center">
-                                                <h6 class="mb-0 text-sm">{{$s->No}}</h6>
+                                                <h6 class="mb-0 text-sm">{{$s->no}}</h6>
                                             </div>
                                         </td>
                         
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    @include('produk.modal-produk')
+    @include('supplier.modal-supplier')
     @include('sweetalert::alert')
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

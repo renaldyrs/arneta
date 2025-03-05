@@ -32,14 +32,32 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group has-success">
                                         <label class="control-label">Supplier</label>
                                         <select name="supplier" class="form-control" id="supplier">
 
-                                            @foreach ($supplier as $item)
-                                                <option value="{{$item->id}}">{{$item->Nama}}</option>
+                                            @foreach ($supplier as $s)
+                                                <option value="{{$s->id}}">{{$s->nama}}</option>
                                             @endforeach
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">Kategori</label>
+                                        <select name="kategori" class="form-control" id="kategori">
+
+                                        @foreach ($kategori as $k )
+
+                                        <option value="{{$k->id}}">{{$k->nama}}</option>
+                                        
+                                        @endforeach
+
+                                        
+                                        
                                         </select>
 
                                     </div>

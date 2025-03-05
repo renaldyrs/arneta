@@ -9,6 +9,8 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\KategoriController;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -92,7 +94,21 @@ Route::get('/login', function () {
 
 Route::get('pesanan',[PesananController::class, 'pesanan']);
 
-Route::get('supplier',[SupplierController::class, 'supplier']);
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('supplier',[SupplierController::class, 'supplier']);
+	Route::post('supplier/tambahsupplier', [SupplierController::class, 'tambah_supplier']);
+	Route::get('supplier/delete/{id}', [SupplierController::class, 'delete_supplier']);
+	Route::post('supplier/edit/{id}', [SupplierController::class, 'update_supplier']);
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('kategori',[KategoriController::class, 'kategori']);
+	Route::post('kategori/tambahkategori', [KategoriController::class, 'tambah_kategori']);
+	Route::get('kategori/delete/{id}', [KategoriController::class, 'delete_kategori']);
+	Route::post('kategori/edit/{id}', [KategoriController::class, 'update_kategori']);
+});
+
+
 
 Route::get('produk',[ProdukController::class, 'produk']);
 Route::post('produk/tambahproduk', [ProdukController::class, 'createproduk']);
